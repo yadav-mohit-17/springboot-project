@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;ExcelExport&apos; to &apos;SpringAnnotationConfiguration&apos;" description="Rename resource &apos;ExcelExport&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/ExcelExport" name="SpringAnnotationConfiguration" stamp="1697260829608" updateReferences="true"/>
+</session>

@@ -44,6 +44,8 @@ public class EmployeeController {
 		return "EmployeeRegister";
 	}
 	//fetch all data from database
+	
+
 	@GetMapping("/all")
 	public String showAll(Model model) {
 		//fetch data from Database using service

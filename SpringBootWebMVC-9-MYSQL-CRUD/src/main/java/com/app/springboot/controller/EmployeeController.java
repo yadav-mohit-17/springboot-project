@@ -34,13 +34,10 @@ public class EmployeeController {
 	// Read Form data and insert in Database
 	@PostMapping("/save")
 	public String saveForm(@ModelAttribute Employee employee, Model model) {
-		//call service and get id
 		Integer id=service.saveEmployee(employee);
-		//construct message
 		String message="Employee'"+id+"'Created";
 		//send message to ui
 		model.addAttribute("message", message);
-		//goto ui
 		return "EmployeeRegister";
 	}
 	//fetch all data from database
@@ -48,14 +45,10 @@ public class EmployeeController {
 
 	@GetMapping("/all")
 	public String showAll(Model model) {
-		//fetch data from Database using service
 		List<Employee> list=service.getAllEmployee();
-		
 		//send this data to ui/view
 		model.addAttribute("list", list);
 	//	model.addAttribute("message", message);
-		
-		//goto ui page
 		return "EmployeeData";
 	}
 	
@@ -64,16 +57,13 @@ public class EmployeeController {
 	public String doDelete(@RequestParam Integer id, RedirectAttributes attributes) {
 	
 		try {
-			//perform delete operation
 			service.deleteEmployee(id);
-			//send message to All
 			attributes.addAttribute("message", "Employee '"+id+"'Deleted");
 		}
 		catch(EmployeeNotFoundException e) {
 			e.printStackTrace();
 			attributes.addAttribute("message", e.getMessage());
 		}
-		//redirect
 		return "redirect:all";
 	}
 	
@@ -81,19 +71,13 @@ public class EmployeeController {
 	public String showEdit(@RequestParam Integer id,Model model) {
 		String page=null;
 		try {
-			//fetch data from DB using service
 			Employee employee=service.getOneEmployee(id);
-			//send to UI
 			model.addAttribute("employee",employee);
-			//goto edit page
 			page="EmployeeEdit";
 		}
 		catch(EmployeeNotFoundException e) {
 			e.printStackTrace();
-			
-			//read exception message
 			model.addAttribute("message", e.getMessage());
-			//goto all page
 			page="redirect:all";
 		}
 		return page;
